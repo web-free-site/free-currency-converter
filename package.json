@@ -1,0 +1,9 @@
+{
+  "name": "free-currency-converter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "test:rates": "node scripts/test-rates.mjs"
+  }
+}

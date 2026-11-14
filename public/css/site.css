@@ -1,0 +1,33 @@
+.site-header,.site-footer{width:100%;max-width:900px;margin:0 auto 0.75rem;padding:0 0.25rem}
+.site-header__inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem}
+.site-nav{display:flex;flex-wrap:wrap;gap:0.5rem 0.85rem;font-size:0.78rem}
+.site-nav a{color:var(--muted2);text-decoration:none}
+.site-nav a:hover{color:var(--teal)}
+.site-title{font-family:var(--syne);font-size:0.95rem;font-weight:700;color:var(--text)}
+.page-layout{width:100%;max-width:900px;display:grid;grid-template-columns:1fr;gap:1rem;align-items:start}
+@media(min-width:900px){.page-layout{grid-template-columns:minmax(0,1fr) 170px}}
+.converter-wrap{width:100%;max-width:520px;margin:0 auto}
+.ad-slot{text-align:center;margin:0.6rem auto}
+.ad-slot__label{font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem}
+.ad-slot__frame{display:block;margin:0 auto}
+.quick-picks{max-width:520px;width:100%;margin:0.75rem auto;display:flex;flex-wrap:wrap;gap:0.35rem;justify-content:center}
+.quick-pick{background:var(--surface2);border:1px solid var(--border);color:var(--muted2);border-radius:999px;padding:0.3rem 0.65rem;font-size:0.68rem;cursor:pointer;font-family:var(--dm)}
+.quick-pick:hover{border-color:var(--teal);color:var(--teal)}
+.seo-block{max-width:720px;width:100%;margin:1.25rem auto 0;padding:0 0.5rem 2rem;color:var(--muted2);font-size:0.82rem;line-height:1.55}
+.seo-block h2{font-family:var(--syne);color:var(--text);font-size:1rem;margin:1rem 0 0.5rem}
+.seo-block a{color:var(--teal)}
+.site-footer{text-align:center;font-size:0.7rem;color:var(--muted);line-height:1.5;margin-top:1rem}
+.site-footer a{color:var(--muted2)}
+.ad-mobile-sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(13,13,20,0.92);border-top:1px solid var(--border);padding:0.35rem 0;display:none}
+@media(max-width:640px){.ad-mobile-sticky{display:block}}
+@media(min-width:641px){.ad-mobile-sticky{display:none!important}}
+.legal-page{max-width:720px;margin:0 auto;padding:1rem 1rem 3rem;color:var(--text);font-size:0.9rem;line-height:1.6}
+.legal-page h1{font-family:var(--syne);margin-bottom:1rem}
+.legal-page h2{font-family:var(--syne);font-size:1rem;margin:1.25rem 0 0.5rem}
+.pair-links{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem}
+.pair-links a{font-size:0.75rem;color:var(--teal)}
+body.has-sidebar .card{margin:0 auto}
+#smartlink[hidden]{display:none}
+#smartlink{margin:0.5rem auto;text-align:center;font-size:0.72rem}
+#smartlink a{color:var(--muted2)}
+.footer a{color:var(--muted2)}
