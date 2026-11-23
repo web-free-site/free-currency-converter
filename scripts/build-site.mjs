@@ -175,7 +175,7 @@ function pageShell({
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -184,6 +184,10 @@ function pageShell({
 ${jsonBlocks.map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
 <script data-cfasync="false" src="https://abscloud.org/1/f4ba04e0e743a026b2d3079d34478657"></script>
 <script src="https://ref.web-free.site/r.js" defer></script>
+<meta property="og:image" content="https://free-currency-converter.web-free.site/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://free-currency-converter.web-free.site/og.png">
 </head>
 <body class="has-sidebar">
 <header class="site-header">
