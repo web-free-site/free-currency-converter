@@ -325,7 +325,7 @@ function legalPage(kind) {
         ],
       },
     },
-    howto: {
+    'how-to': {
       title: 'How to Use the Currency Converter',
       h1: 'How to convert currencies',
       body: `<ol>
@@ -380,7 +380,7 @@ function build() {
   for (const kind of ['about', 'privacy', 'terms', 'contact', 'faq', 'how-to']) {
     const dir = kind;
     const file = 'index.html';
-    const html = legalPage(kind === 'how-to' ? 'howto' : kind);
+    const html = legalPage(kind);
     writePage(dir, file, html);
   }
   writePage('rwf-usd-exchange-rate-today', 'index.html', legalPage('longtail'));
