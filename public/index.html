@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Currency Converter — Live RWF, CDF, XOF, KES Rates</title>
-<meta name="description" content="Free currency converter with live exchange rates for Rwandan franc, CFA, Kenyan shilling, Ugandan shilling, Tanzanian shilling, USD, EUR and 140+ currencies. No API key.">
+<meta name="description" content="Convert 140+ currencies with live rates for RWF, CDF, XOF, XAF, KES, UGX, TZS, USD, EUR and more. Free browser tool—no signup or API key. Indicative rates from open public feeds.">
 <link rel="canonical" href="https://free-currency-converter.web-free.site/">
 <link rel="alternate" hreflang="en" href="https://free-currency-converter.web-free.site/">
 <link rel="alternate" hreflang="fr" href="https://free-currency-converter.web-free.site/fr/">
 <link rel="alternate" hreflang="x-default" href="https://free-currency-converter.web-free.site/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Free Currency Converter — Live RWF, CDF, XOF, KES Rates">
-<meta property="og:description" content="Free currency converter with live exchange rates for Rwandan franc, CFA, Kenyan shilling, Ugandan shilling, Tanzanian shilling, USD, EUR and 140+ currencies. No API key.">
+<meta property="og:description" content="Convert 140+ currencies with live rates for RWF, CDF, XOF, XAF, KES, UGX, TZS, USD, EUR and more. Free browser tool—no signup or API key. Indicative rates from open public feeds.">
 <meta property="og:url" content="https://free-currency-converter.web-free.site/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free Currency Converter — Live RWF, CDF, XOF, KES Rates">
-<meta name="twitter:description" content="Free currency converter with live exchange rates for Rwandan franc, CFA, Kenyan shilling, Ugandan shilling, Tanzanian shilling, USD, EUR and 140+ currencies. No API key.">
+<meta name="twitter:description" content="Convert 140+ currencies with live rates for RWF, CDF, XOF, XAF, KES, UGX, TZS, USD, EUR and more. Free browser tool—no signup or API key. Indicative rates from open public feeds.">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/app.css">
 <link rel="stylesheet" href="/css/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Currency Converter","url":"https://free-currency-converter.web-free.site","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free online currency converter with live rates for RWF, CDF, XOF, XAF, KES, UGX, TZS, USD, EUR and 140+ currencies."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where does this currency converter get its exchange rates?","acceptedAnswer":{"@type":"Answer","text":"With Open ER API selected (the default), your browser requests the latest table from open.er-api.com/v6. If that request fails, the tool automatically tries Fawaz Ahmed’s currency-api on jsDelivr, then pages.dev. You can also choose Fawaz API or Frankfurter manually in the Data Source tabs."}},{"@type":"Question","name":"How often do the rates update on the homepage?","acceptedAnswer":{"@type":"Answer","text":"Each time you load the page, change the “From” currency, switch data sources, or click the refresh control, the converter fetches a new rate table and caches it in your browser session until you refresh again. The status bar shows the source name and the time of the last successful fetch."}},{"@type":"Question","name":"Do I need an account or API key to convert currencies?","acceptedAnswer":{"@type":"Answer","text":"No. The converter runs entirely in your web browser. You do not sign up, log in, or paste an API key. Enter an amount, pick currencies, and convert—amounts you type are not stored on our servers for the conversion itself."}},{"@type":"Question","name":"Can I use these rates for bank transfers or official accounting?","acceptedAnswer":{"@type":"Answer","text":"No. Rates are indicative mid-market style figures from free public feeds. Banks, mobile-money agents, and card processors apply their own spreads, fees, and cut-off times, so always confirm the final amount with your provider before sending money."}},{"@type":"Question","name":"Which African and world currencies are supported?","acceptedAnswer":{"@type":"Answer","text":"The dropdown lists more than 140 ISO codes, including Rwandan franc (RWF), Congolese franc (CDF), West and Central African CFA (XOF/XAF), Kenyan shilling (KES), Ugandan shilling (UGX), Tanzanian shilling (TZS), plus majors such as USD, EUR, GBP, and many others across Africa, Asia, Europe, and the Americas."}}]}</script>
 <script data-cfasync="false" src="https://abscloud.org/1/f4ba04e0e743a026b2d3079d34478657"></script>
 <script src="https://ref.web-free.site/r.js" defer></script>
 <meta property="og:image" content="https://free-currency-converter.web-free.site/og.png">
@@ -69,7 +70,7 @@
     <div class="brand">
       <div class="brand-icon">💱</div>
       <div class="brand-text">
-        <h1 id="appTitle">Free Currency Converter</h1>
+        <h1 id="appTitle">Free Currency Converter — Live African &amp; World Exchange Rates</h1>
         <span id="appSub">Live rates · No API key</span>
       </div>
     </div>
@@ -131,11 +132,59 @@
   </div>
 </div>
 <div class="footer" id="footerText"></div>
-<section class="seo-block">
-  <h2>Free online currency converter</h2>
-  <p>Convert Rwandan franc (RWF), Congolese franc (CDF), West and Central African CFA (XOF/XAF), Kenyan shilling (KES), Ugandan shilling (UGX), and Tanzanian shilling (TZS) to USD and EUR using live rates from open.er-api.com with Fawaz CDN fallback.</p>
+<section class="seo-block" id="homepage-guide">
+  <h2>What this free currency converter does</h2>
+  <p>Free Currency Converter is a browser-based tool that turns one amount from any supported ISO currency code into another using live exchange rates. It is built for travelers, freelancers, and anyone comparing African and world currencies without installing an app or creating an account. The interface highlights East and West African markets—Rwandan franc, Congolese franc, CFA franc zones, and East African shillings—while still supporting global majors such as US dollar and euro.</p>
+  <p>Conversions happen on your device: you enter a number, choose “From” and “To” currencies, and the page multiplies by the cross-rate from the selected public data feed. Results are indicative only; they help you budget, compare quotes, and sanity-check a mobile-money rate before you commit to a transfer.</p>
+
+  <h2>How to use the converter</h2>
+  <ol>
+    <li>Type the amount you want to convert in the <strong>Amount</strong> field (decimals are allowed).</li>
+    <li>Select the source currency under <strong>From</strong> and the target under <strong>To</strong>, or tap a quick-pick chip such as USD→RWF for common African pairs.</li>
+    <li>Leave <strong>Open ER API</strong> selected for the default feed with automatic Fawaz fallback, or switch tabs if you want to force Fawaz API or Frankfurter.</li>
+    <li>Press <strong>Convert</strong>. Use the circular refresh button beside it to pull a fresh rate table without reloading the whole page.</li>
+  </ol>
+  <p>For a deeper walkthrough focused on African currencies, see <a href="/how-to-convert-african-currencies-in-your-browser/">how to convert African currencies in your browser</a>.</p>
+
+  <h2>Currencies covered</h2>
+  <p>The currency dropdown includes <strong>140+ ISO codes</strong>. African units featured on this site include <strong>RWF</strong> (Rwandan franc), <strong>CDF</strong> (Congolese franc), <strong>XOF</strong> and <strong>XAF</strong> (West and Central African CFA francs), <strong>KES</strong> (Kenyan shilling), <strong>UGX</strong> (Ugandan shilling), and <strong>TZS</strong> (Tanzanian shilling). Majors such as <strong>USD</strong>, <strong>EUR</strong>, <strong>GBP</strong>, <strong>ZAR</strong>, <strong>NGN</strong>, and <strong>GHS</strong> are available as well, so you can chain conversions through any supported base currency the APIs return.</p>
+  <p>Dedicated landing pages preload popular pairs—for example <a href="/usd-to-rwf/">USD to RWF</a>, <a href="/rwf-to-usd/">RWF to USD</a>, <a href="/usd-to-kes/">USD to KES</a>, <a href="/eur-to-xof/">EUR to XOF</a>, and <a href="/cdf-to-usd/">CDF to USD</a>—so you can share a direct link instead of setting dropdowns manually.</p>
+
+  <h2>Where live rates come from and how they refresh</h2>
+  <p>The default <strong>auto</strong> mode calls <a href="https://open.er-api.com/">open.er-api.com</a> at <code>/v6/latest/{base}</code> with no API key. If that HTTP request fails or returns an empty table, the script falls back to <a href="https://github.com/fawazahmed0/currency-api">Fawaz Ahmed currency-api</a> on jsDelivr, then on <code>latest.currency-api.pages.dev</code>. Choosing <strong>Fawaz API</strong> uses those CDNs directly; choosing <strong>Frankfurter</strong> loads European Central Bank–style data from <code>api.frankfurter.app</code>.</p>
+  <p>Rates are cached per “From” currency in your browser session. Changing the from-currency, switching data sources, or clicking refresh clears the cache and triggers a new fetch; the status line shows the active source label and a local “Updated” timestamp after each successful download. There is no fixed server-side cron on this static site—the numbers you see reflect the moment your browser last requested the feed.</p>
+
+  <h2>Tips for reading an exchange rate</h2>
+  <p>The result panel shows how much target currency you get for your typed amount and displays the implied cross-rate. Remember that buy and sell prices at a bureau or bank are often different from a mid-market quote, and that CFA zones use two codes—XOF west of Nigeria and XAF in Central Africa—even though both are CFA francs. Our guide <a href="/how-to-read-an-exchange-rate/">how to read an exchange rate</a> explains base versus quote currency, spreads, and why weekend quotes can be stale.</p>
+
+  <h2>Privacy, no sign-up, runs in your browser</h2>
+  <p>You do not need to register or paste credentials to use this tool. Amounts you enter are handled in the page for arithmetic; we do not operate a login system for conversions. Live rate requests go from your browser to the public APIs listed above (and to ad or analytics partners described in our <a href="/privacy/">Privacy</a> page). For similar free utilities that also run client-side, browse the <a href="https://web-free.site/?ref=currency-converter">web-free.site</a> hub.</p>
+
   <h2>Popular conversion pages</h2>
-  <div class="pair-links"><a href="/rwf-to-usd/">RWF → USD</a> · <a href="/usd-to-rwf/">USD → RWF</a> · <a href="/rwf-to-eur/">RWF → EUR</a> · <a href="/eur-to-rwf/">EUR → RWF</a> · <a href="/cdf-to-usd/">CDF → USD</a> · <a href="/usd-to-cdf/">USD → CDF</a> · <a href="/cdf-to-eur/">CDF → EUR</a> · <a href="/eur-to-cdf/">EUR → CDF</a> · <a href="/xof-to-usd/">XOF → USD</a> · <a href="/usd-to-xof/">USD → XOF</a> · <a href="/xof-to-eur/">XOF → EUR</a> · <a href="/eur-to-xof/">EUR → XOF</a> · <a href="/xaf-to-usd/">XAF → USD</a> · <a href="/usd-to-xaf/">USD → XAF</a></div>
+  <div class="pair-links"><a href="/rwf-to-usd/">RWF → USD</a> · <a href="/usd-to-rwf/">USD → RWF</a> · <a href="/rwf-to-eur/">RWF → EUR</a> · <a href="/eur-to-rwf/">EUR → RWF</a> · <a href="/cdf-to-usd/">CDF → USD</a> · <a href="/usd-to-cdf/">USD → CDF</a> · <a href="/cdf-to-eur/">CDF → EUR</a> · <a href="/eur-to-cdf/">EUR → CDF</a> · <a href="/xof-to-usd/">XOF → USD</a> · <a href="/usd-to-xof/">USD → XOF</a> · <a href="/xof-to-eur/">XOF → EUR</a> · <a href="/eur-to-xof/">EUR → XOF</a> · <a href="/xaf-to-usd/">XAF → USD</a> · <a href="/usd-to-xaf/">USD → XAF</a> · <a href="/xaf-to-eur/">XAF → EUR</a> · <a href="/eur-to-xaf/">EUR → XAF</a> · <a href="/kes-to-usd/">KES → USD</a> · <a href="/usd-to-kes/">USD → KES</a> · <a href="/kes-to-eur/">KES → EUR</a> · <a href="/eur-to-kes/">EUR → KES</a> · <a href="/ugx-to-usd/">UGX → USD</a> · <a href="/usd-to-ugx/">USD → UGX</a> · <a href="/ugx-to-eur/">UGX → EUR</a> · <a href="/eur-to-ugx/">EUR → UGX</a> · <a href="/tzs-to-usd/">TZS → USD</a> · <a href="/usd-to-tzs/">USD → TZS</a> · <a href="/tzs-to-eur/">TZS → EUR</a> · <a href="/eur-to-tzs/">EUR → TZS</a></div>
+
+  <h2>Frequently asked questions</h2>
+  
+  <div class="faq-item">
+    <h3>Where does this currency converter get its exchange rates?</h3>
+    <p>With Open ER API selected (the default), your browser requests the latest table from open.er-api.com/v6. If that request fails, the tool automatically tries Fawaz Ahmed’s currency-api on jsDelivr, then pages.dev. You can also choose Fawaz API or Frankfurter manually in the Data Source tabs.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How often do the rates update on the homepage?</h3>
+    <p>Each time you load the page, change the “From” currency, switch data sources, or click the refresh control, the converter fetches a new rate table and caches it in your browser session until you refresh again. The status bar shows the source name and the time of the last successful fetch.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need an account or API key to convert currencies?</h3>
+    <p>No. The converter runs entirely in your web browser. You do not sign up, log in, or paste an API key. Enter an amount, pick currencies, and convert—amounts you type are not stored on our servers for the conversion itself.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use these rates for bank transfers or official accounting?</h3>
+    <p>No. Rates are indicative mid-market style figures from free public feeds. Banks, mobile-money agents, and card processors apply their own spreads, fees, and cut-off times, so always confirm the final amount with your provider before sending money.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Which African and world currencies are supported?</h3>
+    <p>The dropdown lists more than 140 ISO codes, including Rwandan franc (RWF), Congolese franc (CDF), West and Central African CFA (XOF/XAF), Kenyan shilling (KES), Ugandan shilling (UGX), Tanzanian shilling (TZS), plus majors such as USD, EUR, GBP, and many others across Africa, Asia, Europe, and the Americas.</p>
+  </div>
 </section>
     
   </div>
@@ -157,7 +206,6 @@
 
 <script src="/js/app.js" defer></script>
 <script src="/js/ads.js" defer></script>
-
 <aside id="wf-more-tools" class="wf-more-tools" aria-labelledby="wf-mt-title">
   <style>
     .wf-more-tools{box-sizing:border-box;width:100%;margin:2.5rem 0 0;padding:1.5rem 1rem 5rem;border-top:1px solid rgba(0,0,0,.12);background:rgba(248,249,251,.97);color:#1a1a1a;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.5}
@@ -186,5 +234,6 @@
 </aside>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3e2f5f96ab32442ebb6e6f650615b58a"}'></script><!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>

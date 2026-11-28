@@ -64,7 +64,7 @@ function converterMarkup(lang) {
     <div class="brand">
       <div class="brand-icon">💱</div>
       <div class="brand-text">
-        <h1 id="appTitle">${isFr ? 'Convertisseur de devises gratuit' : 'Free Currency Converter'}</h1>
+        <h1 id="appTitle">${isFr ? 'Convertisseur de devises gratuit' : 'Free Currency Converter — Live African &amp; World Exchange Rates'}</h1>
         <span id="appSub">${isFr ? 'Taux live · Sans clé API' : 'Live rates · No API key'}</span>
       </div>
     </div>
@@ -235,15 +235,99 @@ function writePage(relDir, file, html) {
   fs.writeFileSync(path.join(dir, file), html);
 }
 
+const HOME_FAQ = [
+  {
+    q: 'Where does this currency converter get its exchange rates?',
+    a: 'With Open ER API selected (the default), your browser requests the latest table from open.er-api.com/v6. If that request fails, the tool automatically tries Fawaz Ahmed’s currency-api on jsDelivr, then pages.dev. You can also choose Fawaz API or Frankfurter manually in the Data Source tabs.',
+  },
+  {
+    q: 'How often do the rates update on the homepage?',
+    a: 'Each time you load the page, change the “From” currency, switch data sources, or click the refresh control, the converter fetches a new rate table and caches it in your browser session until you refresh again. The status bar shows the source name and the time of the last successful fetch.',
+  },
+  {
+    q: 'Do I need an account or API key to convert currencies?',
+    a: 'No. The converter runs entirely in your web browser. You do not sign up, log in, or paste an API key. Enter an amount, pick currencies, and convert—amounts you type are not stored on our servers for the conversion itself.',
+  },
+  {
+    q: 'Can I use these rates for bank transfers or official accounting?',
+    a: 'No. Rates are indicative mid-market style figures from free public feeds. Banks, mobile-money agents, and card processors apply their own spreads, fees, and cut-off times, so always confirm the final amount with your provider before sending money.',
+  },
+  {
+    q: 'Which African and world currencies are supported?',
+    a: 'The dropdown lists more than 140 ISO codes, including Rwandan franc (RWF), Congolese franc (CDF), West and Central African CFA (XOF/XAF), Kenyan shilling (KES), Ugandan shilling (UGX), Tanzanian shilling (TZS), plus majors such as USD, EUR, GBP, and many others across Africa, Asia, Europe, and the Americas.',
+  },
+];
+
+function homeFaqJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: HOME_FAQ.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  };
+}
+
+function homeFaqHtml() {
+  return HOME_FAQ.map(
+    ({ q, a }) => `
+  <div class="faq-item">
+    <h3>${esc(q)}</h3>
+    <p>${esc(a)}</p>
+  </div>`,
+  ).join('');
+}
+
+function homeSeoEn() {
+  const pairLinks = pairs()
+    .map(([f, t]) => `<a href="/${slug(f, t)}/">${f} → ${t}</a>`)
+    .join(' · ');
+  return `
+<section class="seo-block" id="homepage-guide">
+  <h2>What this free currency converter does</h2>
+  <p>Free Currency Converter is a browser-based tool that turns one amount from any supported ISO currency code into another using live exchange rates. It is built for travelers, freelancers, and anyone comparing African and world currencies without installing an app or creating an account. The interface highlights East and West African markets—Rwandan franc, Congolese franc, CFA franc zones, and East African shillings—while still supporting global majors such as US dollar and euro.</p>
+  <p>Conversions happen on your device: you enter a number, choose “From” and “To” currencies, and the page multiplies by the cross-rate from the selected public data feed. Results are indicative only; they help you budget, compare quotes, and sanity-check a mobile-money rate before you commit to a transfer.</p>
+
+  <h2>How to use the converter</h2>
+  <ol>
+    <li>Type the amount you want to convert in the <strong>Amount</strong> field (decimals are allowed).</li>
+    <li>Select the source currency under <strong>From</strong> and the target under <strong>To</strong>, or tap a quick-pick chip such as USD→RWF for common African pairs.</li>
+    <li>Leave <strong>Open ER API</strong> selected for the default feed with automatic Fawaz fallback, or switch tabs if you want to force Fawaz API or Frankfurter.</li>
+    <li>Press <strong>Convert</strong>. Use the circular refresh button beside it to pull a fresh rate table without reloading the whole page.</li>
+  </ol>
+  <p>For a deeper walkthrough focused on African currencies, see <a href="/how-to-convert-african-currencies-in-your-browser/">how to convert African currencies in your browser</a>.</p>
+
+  <h2>Currencies covered</h2>
+  <p>The currency dropdown includes <strong>140+ ISO codes</strong>. African units featured on this site include <strong>RWF</strong> (Rwandan franc), <strong>CDF</strong> (Congolese franc), <strong>XOF</strong> and <strong>XAF</strong> (West and Central African CFA francs), <strong>KES</strong> (Kenyan shilling), <strong>UGX</strong> (Ugandan shilling), and <strong>TZS</strong> (Tanzanian shilling). Majors such as <strong>USD</strong>, <strong>EUR</strong>, <strong>GBP</strong>, <strong>ZAR</strong>, <strong>NGN</strong>, and <strong>GHS</strong> are available as well, so you can chain conversions through any supported base currency the APIs return.</p>
+  <p>Dedicated landing pages preload popular pairs—for example <a href="/usd-to-rwf/">USD to RWF</a>, <a href="/rwf-to-usd/">RWF to USD</a>, <a href="/usd-to-kes/">USD to KES</a>, <a href="/eur-to-xof/">EUR to XOF</a>, and <a href="/cdf-to-usd/">CDF to USD</a>—so you can share a direct link instead of setting dropdowns manually.</p>
+
+  <h2>Where live rates come from and how they refresh</h2>
+  <p>The default <strong>auto</strong> mode calls <a href="https://open.er-api.com/">open.er-api.com</a> at <code>/v6/latest/{base}</code> with no API key. If that HTTP request fails or returns an empty table, the script falls back to <a href="https://github.com/fawazahmed0/currency-api">Fawaz Ahmed currency-api</a> on jsDelivr, then on <code>latest.currency-api.pages.dev</code>. Choosing <strong>Fawaz API</strong> uses those CDNs directly; choosing <strong>Frankfurter</strong> loads European Central Bank–style data from <code>api.frankfurter.app</code>.</p>
+  <p>Rates are cached per “From” currency in your browser session. Changing the from-currency, switching data sources, or clicking refresh clears the cache and triggers a new fetch; the status line shows the active source label and a local “Updated” timestamp after each successful download. There is no fixed server-side cron on this static site—the numbers you see reflect the moment your browser last requested the feed.</p>
+
+  <h2>Tips for reading an exchange rate</h2>
+  <p>The result panel shows how much target currency you get for your typed amount and displays the implied cross-rate. Remember that buy and sell prices at a bureau or bank are often different from a mid-market quote, and that CFA zones use two codes—XOF west of Nigeria and XAF in Central Africa—even though both are CFA francs. Our guide <a href="/how-to-read-an-exchange-rate/">how to read an exchange rate</a> explains base versus quote currency, spreads, and why weekend quotes can be stale.</p>
+
+  <h2>Privacy, no sign-up, runs in your browser</h2>
+  <p>You do not need to register or paste credentials to use this tool. Amounts you enter are handled in the page for arithmetic; we do not operate a login system for conversions. Live rate requests go from your browser to the public APIs listed above (and to ad or analytics partners described in our <a href="/privacy/">Privacy</a> page). For similar free utilities that also run client-side, browse the <a href="https://web-free.site/?ref=currency-converter">web-free.site</a> hub.</p>
+
+  <h2>Popular conversion pages</h2>
+  <div class="pair-links">${pairLinks}</div>
+
+  <h2>Frequently asked questions</h2>
+  ${homeFaqHtml()}
+</section>`;
+}
+
 function homeSeo(lang) {
-  const isFr = lang === 'fr';
+  if (lang === 'en') return homeSeoEn();
   return `
 <section class="seo-block">
-  <h2>${isFr ? 'Convertisseur de devises gratuit en ligne' : 'Free online currency converter'}</h2>
-  <p>${isFr
-    ? 'Convertissez le franc rwandais (RWF), le franc congolais (CDF), le franc CFA (XOF/XAF), le shilling kenyan (KES), le shilling ougandais (UGX) et le shilling tanzanien (TZS) vers USD et EUR avec des taux mis à jour via open.er-api.com (secours Fawaz).'
-    : 'Convert Rwandan franc (RWF), Congolese franc (CDF), West and Central African CFA (XOF/XAF), Kenyan shilling (KES), Ugandan shilling (UGX), and Tanzanian shilling (TZS) to USD and EUR using live rates from open.er-api.com with Fawaz CDN fallback.'}</p>
-  <h2>${isFr ? 'Paires populaires' : 'Popular conversion pages'}</h2>
+  <h2>Convertisseur de devises gratuit en ligne</h2>
+  <p>Convertissez le franc rwandais (RWF), le franc congolais (CDF), le franc CFA (XOF/XAF), le shilling kenyan (KES), le shilling ougandais (UGX) et le shilling tanzanien (TZS) vers USD et EUR avec des taux mis à jour via open.er-api.com (secours Fawaz).</p>
+  <h2>Paires populaires</h2>
   <div class="pair-links">${pairs().slice(0, 14).map(([f, t]) => `<a href="/${slug(f, t)}/">${f} → ${t}</a>`).join(' · ')}</div>
 </section>`;
 }
@@ -356,9 +440,10 @@ function legalPage(kind) {
 function build() {
   writePage('', 'index.html', pageShell({
     title: 'Free Currency Converter — Live RWF, CDF, XOF, KES Rates',
-    description: 'Free currency converter with live exchange rates for Rwandan franc, CFA, Kenyan shilling, Ugandan shilling, Tanzanian shilling, USD, EUR and 140+ currencies. No API key.',
+    description: 'Convert 140+ currencies with live rates for RWF, CDF, XOF, XAF, KES, UGX, TZS, USD, EUR and more. Free browser tool—no signup or API key. Indicative rates from open public feeds.',
     canonical: `${SITE}/`,
     bodyMain: converterMarkup('en') + homeSeo('en'),
+    extraJsonLd: [homeFaqJsonLd()],
   }));
 
   writePage('fr', 'index.html', pageShell({

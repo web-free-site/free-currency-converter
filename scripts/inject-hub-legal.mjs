@@ -72,8 +72,20 @@ function injectGtag(text) {
   return text;
 }
 
+const BODY_FRAGMENT = path.join(import.meta.dirname, "wf-more-tools.fragment.html");
+
+function injectBodyTail(text) {
+  if (text.includes('id="wf-more-tools"')) return text;
+  if (!fs.existsSync(BODY_FRAGMENT)) return text;
+  const fragment = fs.readFileSync(BODY_FRAGMENT, "utf8");
+  const lower = text.toLowerCase();
+  const idx = lower.lastIndexOf("</body>");
+  if (idx === -1) return text;
+  return text.slice(0, idx) + fragment + "\n" + text.slice(idx);
+}
+
 function inject(text) {
-  return injectGtag(injectLegal(text));
+  return injectBodyTail(injectGtag(injectLegal(text)));
 }
 
 function wranglerAssetDir() {
